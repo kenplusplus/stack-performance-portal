@@ -8,6 +8,7 @@
         :options="chartOptions"
         :series="series"
       ></apexchart>
+      <a>Dummy data for demo purpose</a>
     </div>
   </div>
 </template>

@@ -6,7 +6,7 @@
         <div align="center">
           <apexchart
             type="radar"
-            height="500"
+            height="800"
             :options="chartOptions"
             :series="series"
           ></apexchart>
@@ -16,27 +16,6 @@
     <el-tab-pane label="2021WW27">
       <div>
         <h1>2021WW27 Release</h1>
-        <div align="center">
-          <apexchart
-            type="radar"
-            height="500"
-            :options="chartOptions"
-            :series="series"
-          ></apexchart>
-        </div>
-      </div>
-    </el-tab-pane>
-    <el-tab-pane label="2021WW24">
-      <div>
-        <h1>2021WW24 Release</h1>
-        <div align="center">
-          <apexchart
-            type="radar"
-            height="500"
-            :options="chartOptions"
-            :series="series"
-          ></apexchart>
-        </div>
       </div>
     </el-tab-pane>
   </el-tabs>
@@ -51,18 +30,150 @@ export default {
         chart: {
           id: 'vuechart-example'
         },
+        yaxis: {
+          max: 120
+        },
         xaxis: {
-          categories: ['1991', '1992', '1993', '1994', '1995', 1996, 1997, 1998]
+          categories: [
+            '7-zip',
+            'MBW-128M',
+            'MBW-128M-F',
+            'CacheBench-R',
+            'CacheBench-W',
+            'CacheBench-RW',
+            'GlibC-cos',
+            'GlibC-exp',
+            'GlibC-ffs',
+            'GlibC-sin',
+            'GlibC-log2',
+            'GlibC-modf',
+            'GlibC-sinh',
+            'GlibC-sqrt',
+            'GlibC-tanh',
+            'GlibC-asinh',
+            'GlibC-atanh',
+            'GlibC-ffsll',
+            'GlibC-sincos',
+            'GlibC-pthread',
+            'Openssl-RSA',
+            'OSBench-CreateFile',
+            'OSBench-CreateThread',
+            'OSBench-LaunchProgram',
+            'OSBench-CreateProcess',
+            'OSBench-MemAlloc',
+            'ctx_clock',
+            'Apache',
+            'TFLite-Squeeze',
+            'TFLite-Inception',
+            'TFLite-NAS',
+            'TFLite-MobileF',
+            'TFLite-MobileQ',
+            'TFLite-ResNet',
+            'Numpy',
+            'VMBoot',
+            'ContainerStart',
+            'Iperf-TCP',
+            'FIO',
+            'vsock',
+            'redis-set',
+            'redis-rpush',
+            'redis-spop']
         }
       },
       series: [
         {
-          name: 'series-1',
-          data: [30, 40, 35, 50, 49, 60, 70, 91]
+          name: 'td/non-td',
+          data: [
+            99,
+            97,
+            92,
+            91,
+            91,
+            82,
+            95,
+            93,
+            91,
+            92,
+            95,
+            92,
+            95,
+            90,
+            92,
+            92,
+            90,
+            91,
+            92,
+            92,
+            97,
+            93,
+            92,
+            81,
+            92,
+            92,
+            99,
+            89,
+            84,
+            95,
+            124,
+            105,
+            103,
+            96,
+            100,
+            73,
+            94,
+            73,
+            60,
+            1,
+            97,
+            99,
+            91]
         },
         {
-          name: 'series-2',
-          data: [67, 22, 33, 6, 14, 60, 7, 13]
+          name: 'beta',
+          data: [
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85]
         }
       ]
     }
