@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../apps/home/index.vue'
-import SGX from '../apps/sgx/index.vue'
-import TDX from '../apps/tdx/index.vue'
+import Home from '../apps/home/Index.vue'
+import SGX from '../apps/sgx/Index.vue'
+import TDX from '../apps/tdx/Index.vue'
 
 const routes = [
   {
