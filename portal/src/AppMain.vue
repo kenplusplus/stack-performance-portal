@@ -3,20 +3,17 @@
     <div class="nav-container">
       <div id="menu" :class="{ active: isActive }">
         <el-menu mode="horizontal" @select="handleSelect" :router="true">
-          <el-menu-item id="logo" index="/" :route="{ name: 'Root' }">
+          <el-menu-item id="logo" index="/" :route="{ name: 'Home' }">
             <logo></logo>
           </el-menu-item>
-          <el-menu-item index="/hello" :route="{ name: 'Hello' }">
-            Hello
+          <el-menu-item index="/tdx" :route="{ name: 'TDX' }">
+            TDX
           </el-menu-item>
-          <el-menu-item index="/projects" :route="{ name: 'Projects' }">
-            Projects
+          <el-menu-item index="/sgx" :route="{ name: 'SGX' }">
+            SGX
           </el-menu-item>
           <el-menu-item index="/about" :route="{ name: 'About' }">
             About
-          </el-menu-item>
-          <el-menu-item index="/contact" :route="{ name: 'Contact' }">
-            Contact
           </el-menu-item>
         </el-menu>
       </div>
