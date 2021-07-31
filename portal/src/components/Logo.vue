@@ -2,7 +2,7 @@
   <div class="logo-header">
     <div id="logo">
       <img src="@/assets/stack-performance-logo.png" alt="Logo">
-      <span>Vue.js</span>
+      <span>Linux Stack Performance</span>
     </div>
   </div>
 </template>
@@ -18,8 +18,8 @@ span {
 
 #logo img {
   margin-right: 5px;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
 }
 
 </style>
