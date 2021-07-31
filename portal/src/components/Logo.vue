@@ -1,7 +1,7 @@
 <template>
   <div class="logo-header">
     <div id="logo">
-      <img src="@/assets/stack-performance-logo.png" alt="Logo">
+      <img src="@/assets/logo.png" alt="Logo" />
       <span>Linux Stack Performance</span>
     </div>
   </div>
@@ -21,5 +21,4 @@ span {
   width: 60px;
   height: 60px;
 }
-
 </style>
