@@ -144,8 +144,7 @@ export default {
 <style>
 .metric-card {
   position: relative;
-  margin-left: 10;
-  margin-right: 10;
+  margin: 2px;
   width: 100%;
 }
 </style>
