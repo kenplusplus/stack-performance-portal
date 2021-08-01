@@ -15,10 +15,14 @@
     </el-tab-pane>
     <el-tab-pane label="Workload/Metrics">
       <div>
-        <el-card class='metric-card' v-for="(metric, index) in Object.keys(metricsChart)" :key="index" shadow="always">
-          <h2>{{ metric }}</h2>
-          <apexchart type="line" height="200" :options="metricsChart[metric].chartOptions" :series="metricsChart[metric].series"></apexchart>
-        </el-card>
+        <el-row :gutter="12">
+          <el-col :span="8" v-for="(metric, index) in Object.keys(metricsChart)" :key="index" >
+            <el-card class='metric-card' shadow="always">
+              <h2>{{ metric }}</h2>
+              <apexchart type="line" height="200" :options="metricsChart[metric].chartOptions" :series="metricsChart[metric].series"></apexchart>
+            </el-card>
+          </el-col>
+        </el-row>
       </div>
     </el-tab-pane>
   </el-tabs>
@@ -140,9 +144,8 @@ export default {
 <style>
 .metric-card {
   position: relative;
-  margin-left: 20;
-  margin-right: 20;
-  height: 100%;
-  width: 80%;
+  margin-left: 10;
+  margin-right: 10;
+  width: 100%;
 }
 </style>
