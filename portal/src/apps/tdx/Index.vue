@@ -23,9 +23,27 @@
 
 <script>
 
+import { useStore } from 'vuex'
+
 export default {
+  mounted: function () {
+    console.log('mounted TDX.')
+    this.$store = useStore()
+    console.log(this.$store.state.tdx)
+    for (var releaseIndex in this.$store.getters.tdx_releases) {
+      console.log(this.$store.getters.tdx_releases[releaseIndex])
+      var release = this.$store.getters.tdx_releases[releaseIndex]
+      console.log(this.$store.state.tdx[release])
+      console.log(Object.keys(this.$store.state.tdx[release]))
+      console.log(Object.values(this.$store.state.tdx[release]))
+      console.log(Object.values(this.$store.state.tdx[release]).length)
+      // for (var metric_index in this.$store.state.tdx[release]) {
+      // }
+    }
+  },
   data: function () {
     return {
+      store: null,
       chartOptions: {
         chart: {
           id: 'vuechart-example'
