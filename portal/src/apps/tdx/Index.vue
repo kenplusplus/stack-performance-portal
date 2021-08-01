@@ -13,72 +13,136 @@
         </div>
       </div>
     </el-tab-pane>
+    <el-tab-pane label="Workload/Metrics">
+      <div>
+        <el-card class='metric-card' v-for="(metric, index) in Object.keys(metricsChart)" :key="index" shadow="always">
+          <h2>{{ metric }}</h2>
+          <apexchart type="line" height="200" :options="metricsChart[metric].chartOptions" :series="metricsChart[metric].series"></apexchart>
+        </el-card>
+      </div>
+    </el-tab-pane>
   </el-tabs>
 </template>
 
 <script>
-
 import { useStore } from 'vuex'
 
 export default {
   mounted: function () {
     console.log('mounted TDX.')
     this.$store = useStore()
-    console.log(this.$store.state.tdx)
-    for (var releaseIndex in this.$store.getters.tdx_releases) {
-      console.log(this.$store.getters.tdx_releases[releaseIndex])
-      var release = this.$store.getters.tdx_releases[releaseIndex]
-      console.log(this.$store.state.tdx[release])
-      console.log(Object.keys(this.$store.state.tdx[release]))
-      console.log(Object.values(this.$store.state.tdx[release]))
-      console.log(Object.values(this.$store.state.tdx[release]).length)
-      var seriesBeta = []
-      var seriesProduction = []
-      for (let index = 0; index < Object.values(this.$store.state.tdx[release]).length; index++) {
-        seriesBeta.push(85)
-        seriesProduction.push(100)
-      }
+  },
+  data: function () {
+    return {
+      store: null
+    }
+  },
+  computed: {
+    releaseData () {
+      var returnArray = []
 
-      // for (var metric_index in this.$store.state.tdx[release]) {
-      // }
-      this.releaseData.push(
-        {
-          name: release,
+      for (var releaseIndex in this.$store.getters.tdx_releases) {
+        var release = this.$store.getters.tdx_releases[releaseIndex]
+        var seriesBeta = []
+        var seriesProduction = []
+        for (let index = 0; index < Object.values(this.$store.state.tdx[release]).length; index++) {
+          seriesBeta.push(85)
+          seriesProduction.push(100)
+        }
+
+        returnArray.push(
+          {
+            name: release,
+            chartOptions: {
+              chart: {
+                id: 'chart-' + release
+              },
+              yaxis: {
+                max: 120
+              },
+              xaxis: {
+                categories: Object.keys(this.$store.state.tdx[release])
+              }
+            },
+            series: [
+              {
+                name: 'td/non-td',
+                data: Object.values(this.$store.state.tdx[release])
+              },
+              {
+                name: 'beta',
+                data: seriesBeta
+              },
+              {
+                name: 'production',
+                data: seriesProduction
+              }
+            ]
+          }
+        )
+      }
+      return returnArray
+    },
+    metricsData () {
+      var metricsNames = []
+      var metricsArray = {}
+      for (var releaseIndex in this.$store.getters.tdx_releases) {
+        var release = this.$store.getters.tdx_releases[releaseIndex]
+        var metricsKeys = Object.keys(this.$store.state.tdx[release])
+        var metricsValues = Object.values(this.$store.state.tdx[release])
+        for (var metricsIndex in metricsKeys) {
+          var metric = metricsKeys[metricsIndex]
+          if (!metricsNames.includes(metric, 0)) {
+            metricsNames.push(metric)
+            metricsArray[metric] = {}
+          }
+          metricsArray[metric][release] = metricsValues[metricsIndex]
+        }
+      }
+      return metricsArray
+    },
+    metricsChart () {
+      var returnData = {}
+      var metricsNames = Object.keys(this.metricsData)
+      for (var index in metricsNames) {
+        var name = metricsNames[index]
+        returnData[name] = {
+          x: Object.keys(this.metricsData[name]).reverse(),
           chartOptions: {
             chart: {
-              id: 'chart-' + release
+              height: 350,
+              type: 'line',
+              zoom: {
+                enabled: true
+              }
             },
-            yaxis: {
-              max: 120
+            dataLabels: {
+              enabled: true
             },
             xaxis: {
-              categories: Object.keys(this.$store.state.tdx[release])
+              categories: Object.keys(this.metricsData[name]).reverse()
             }
           },
           series: [
             {
-              name: 'td/non-td',
-              data: Object.values(this.$store.state.tdx[release])
-            },
-            {
-              name: 'beta',
-              data: seriesBeta
-            },
-            {
-              name: 'production',
-              data: seriesProduction
+              name: 'metric',
+              data: Object.values(this.metricsData[name]).reverse()
             }
           ]
         }
-      )
-      console.log(this.releaseData)
-    }
-  },
-  data: function () {
-    return {
-      store: null,
-      releaseData: []
+      }
+      console.log(returnData)
+      return returnData
     }
   }
 }
 </script>
+<style>
+.metric-card {
+  position: relative;
+  margin-left: 20;
+  margin-right: 20;
+  height: 100%;
+  width: 80%;
+}
+</style>
