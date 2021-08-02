@@ -173,7 +173,42 @@ const ModuleTdx = {
 
 const ModuleSgx = {
   state: () => ({
-
+    Q3: {
+      'GlibC-ffsll': 97,
+      'GlibC-ffs': 115,
+      'GlibC-pthread_once': 118,
+      'GlibC-tanh': 101,
+      'GlibC-sqrt': 113,
+      'GlibC-sin': 99,
+      'GlibC-cos': 98,
+      'GlibC-asinh': 102,
+      'GlibC-atanh': 99,
+      'GlibC-sincos': 99,
+      'GlibC-sinh': 106,
+      'GlibC-modf': 116,
+      'GlibC-exp': 118,
+      'GlibC-log2': 102,
+      TesnsorFlow: 84,
+      MySQL: 61,
+      'Redis-ping_inline': 99,
+      'Redis-ping_bulk': 80,
+      'Redis-set': 98,
+      'Redis-get': 124,
+      'Redis-incr': 100,
+      'Redis-lpush': 82,
+      'Redis-rpush': 100,
+      'Redis-lpop': 122,
+      'Redis-rpop': 99,
+      'Redis-sadd': 82,
+      'Redis-hset': 99,
+      'Redis-spop': 122,
+      'Redis-lpush_lrange': 99,
+      'Redis-lrange_100': 91,
+      'Redis-lrange_300': 99,
+      'Redis-lrange_500': 104,
+      'Redis-lrange_600': 101,
+      'Redis-mset': 100
+    }
   }),
   mutations: {
 
@@ -182,6 +217,10 @@ const ModuleSgx = {
 
   },
   getters: {
+    sgx_releases (state) {
+      console.log(Object.keys(state))
+      return Object.keys(state)
+    }
 
   }
 }
