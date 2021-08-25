@@ -43,7 +43,6 @@ const ModuleTdx = {
       'Iperf-vhost-on': 56,
       'Iperf-vhost-off': 101,
       FIO: 74,
-      vsock: 3,
       'redis-set': 96,
       'redis-rpush': 96,
       'redis-spop': 95
