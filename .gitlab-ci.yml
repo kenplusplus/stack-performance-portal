@@ -1,0 +1,6 @@
+build-www:
+  script:
+    - cd portal
+    - npm install
+    - npm run build
+    - sudo cp src/.vuepress/dist/* /usr/share/nginx/html_81/ -fr
