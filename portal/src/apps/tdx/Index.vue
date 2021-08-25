@@ -62,7 +62,9 @@ export default {
                 id: 'chart-' + release
               },
               yaxis: {
-                max: 120
+                max: 120,
+                min: 0,
+                tickAmount: 10
               },
               xaxis: {
                 categories: Object.keys(this.$store.state.tdx[release])
